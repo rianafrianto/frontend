@@ -40,7 +40,7 @@ const DetailPage = () => {
           </div>
         )}
         <Button type='primary' className='w-full mt-10' onClick={() => navigate('/homepage')}>
-          Kembali
+          Back
         </Button>
       </div>
     </>
