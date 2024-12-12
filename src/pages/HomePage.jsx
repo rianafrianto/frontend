@@ -4,7 +4,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined, PlusOutlined, SearchOutlined
 import { DataContext } from '../context/DataContext'
 import ItemModal from '../components/ItemModal'
 
-const Homepage = () => {
+const HomePage = () => {
 
     const { 
         Button, Input, Select, Table, itemData, navigate, Form,
@@ -175,4 +175,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage
+export default HomePage
