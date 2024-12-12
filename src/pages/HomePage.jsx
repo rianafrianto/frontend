@@ -6,11 +6,11 @@ import ItemModal from '../components/ItemModal'
 
 const HomePage = () => {
 
-    const { 
+    const {
         Button, Input, Select, Table, itemData, navigate, Form,
         setTypeModal, setSelectedItem, removeCard, token, fetchItem
-     } = useContext(DataContext)
-     const dataToken = localStorage.getItem("token")
+    } = useContext(DataContext)
+    const dataToken = localStorage.getItem("token")
 
     const [pageSize, setPageSize] = useState(5);
     const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +41,7 @@ const HomePage = () => {
 
     const handleNavigate = (record) => {
         navigate(`/detail/${record?.id}`, { state: { record } });
-      };
+    };
 
     const columns = [
         {
@@ -85,42 +85,75 @@ const HomePage = () => {
             key: 'action',
             align: 'center',
             render: (text, record) => (
-                <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 justify-center">
-                    <Button
-                        type="link"
-                        icon={<EyeOutlined />}
-                        onClick={() => handleNavigate(record)}
-                        className="text-gray-600"
-                        size="small"
-                    >
-                        Detail Item
-                    </Button>
-                    <Button
-                        type="primary"
-                        icon={<EditOutlined />}
-                        onClick={() => {
-                            setTypeModal("Edit")
-                            setSelectedItem(record);
-                            setIsModalVisible(true);
-                        }}
-                        className="mr-2"
-                        size="small"
-                    >
-                        Edit
-                    </Button>
-                    <Button
-                        type="danger"
-                        icon={<DeleteOutlined />}
-                          onClick={() => removeCard(record.id)}
-                        size="small"
-                    >
-                        Delete
-                    </Button>
+                <div className="flex flex-wrap justify-center space-x-2">
+                    {/* Detail Button */}
+                    <div className="sm:block hidden">
+                        <Button
+                            type="link"
+                            icon={<EyeOutlined />}
+                            onClick={() => handleNavigate(record)}
+                            className="text-gray-600"
+                            size="small"
+                        >
+                            Detail Item
+                        </Button>
+                    </div>
+                    <div className="sm:hidden">
+                        <EyeOutlined
+                            onClick={() => handleNavigate(record)}
+                            className="cursor-pointer text-gray-600"
+                        />
+                    </div>
 
+                    {/* Edit Button */}
+                    <div className="sm:block hidden">
+                        <Button
+                            type="primary"
+                            icon={<EditOutlined />}
+                            onClick={() => {
+                                setTypeModal("Edit");
+                                setSelectedItem(record);
+                                setIsModalVisible(true);
+                            }}
+                            className="mr-2"
+                            size="small"
+                        >
+                            Edit
+                        </Button>
+                    </div>
+                    <div className="sm:hidden">
+                        <EditOutlined
+                            onClick={() => {
+                                setTypeModal("Edit");
+                                setSelectedItem(record);
+                                setIsModalVisible(true);
+                            }}
+                            className="cursor-pointer text-primary"
+                        />
+                    </div>
+
+                    {/* Delete Button */}
+                    <div className="sm:block hidden">
+                        <Button
+                            type="danger"
+                            icon={<DeleteOutlined />}
+                            onClick={() => removeCard(record.id)}
+                            size="small"
+                        >
+                            Delete
+                        </Button>
+                    </div>
+                    <div className="sm:hidden">
+                        <DeleteOutlined
+                            onClick={() => removeCard(record.id)}
+                            className="cursor-pointer text-red-600"
+                        />
+                    </div>
                 </div>
             ),
-            className: "sm:block", 
-        },
+            className: "sm:block",
+        }
+
 
     ];
 
@@ -176,7 +209,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <ItemModal visible={isModalVisible} onClose={closeModal} form={form}  />
+            <ItemModal visible={isModalVisible} onClose={closeModal} form={form} />
         </>
     )
 }
