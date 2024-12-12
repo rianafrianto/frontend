@@ -2,7 +2,7 @@ import { useContext } from 'react';;
 import { DataContext } from '../context/DataContext';
 
 const AuthForm = (props) => {
-    const { Button, Form, Input, Select, login, navigate, register } = useContext(DataContext);
+    const { Button, Form, Input, Select, login, navigate, register, loading } = useContext(DataContext);
     const { type } = props;
 
     const onFinish = async (values) => {
@@ -49,7 +49,7 @@ const AuthForm = (props) => {
                             <Input.Password placeholder="Enter your password" />
                         </Form.Item>
 
-                        <Button type="primary" htmlType="submit" block>
+                        <Button type="primary" htmlType="submit" block disabled={loading}>
                             {type}
                         </Button>
                     </Form>
