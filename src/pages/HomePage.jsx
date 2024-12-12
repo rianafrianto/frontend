@@ -51,6 +51,7 @@ const HomePage = () => {
             render: (text) => (
                 <span className="capitalize font-semibold text-gray-700">{text}</span>
             ),
+            responsive: ['xs', 'sm'],
         },
         {
             title: 'Description',
@@ -59,6 +60,7 @@ const HomePage = () => {
             render: (text) => (
                 <span className="capitalize font-semibold text-gray-700">{text}</span>
             ),
+            className: "hidden sm:table-cell",
         },
         {
             title: 'Category',
@@ -67,6 +69,7 @@ const HomePage = () => {
             render: (text) => (
                 <span className="capitalize font-semibold text-gray-700">{text}</span>
             ),
+            className: "hidden sm:table-cell",
         },
         {
             title: 'Price',
@@ -75,6 +78,7 @@ const HomePage = () => {
             render: (text) => (
                 <span className="capitalize font-semibold text-gray-700">{Number(text).toLocaleString()}</span>
             ),
+            className: "hidden sm:table-cell",
         },
         {
             title: 'Action',
@@ -115,6 +119,7 @@ const HomePage = () => {
 
                 </div>
             ),
+            className: "sm:block", 
         },
 
     ];
