@@ -20,14 +20,14 @@ export const DataProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [form] = Form.useForm();
     const navigate = useNavigate()
-    const apiUrl = import.meta.env.VITE_API_URL
+    console.log(API_URL)
 
     // login
     const login = async (values) => {
         setLoading(true)
         setError(null)
         try {
-            const response = await axios.post(apiUrl || API_URL + "/auth/login", values);
+            const response = await axios.post(API_URL + "/auth/login", values);
             if (response?.data?.success) {
                 const { token } = response.data;
                 localStorage.setItem("token", token);
@@ -49,7 +49,7 @@ export const DataProvider = ({ children }) => {
         setLoading(true)
         setError(null)
         try {
-            const response = await axios.post(apiUrl || API_URL + "/auth/register", values);
+            const response = await axios.post(API_URL + "/auth/register", values);
             if (response.data.success) {
                 Swal.fire({
                     icon: 'success',
@@ -74,7 +74,7 @@ export const DataProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`${apiUrl || API_URL}/items`, {
+            const response = await axios.get(`${API_URL}/items`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -99,7 +99,7 @@ export const DataProvider = ({ children }) => {
     const addCard = async (newCard) => {
         setLoadingAddUpdate(true);
         try {
-            const response = await axios.post(`${apiUrl || API_URL}/items`, newCard, {
+            const response = await axios.post(`${API_URL}/items`, newCard, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -128,7 +128,7 @@ export const DataProvider = ({ children }) => {
     const updateCard = async (id, values) => {
         setLoadingAddUpdate(true);
         try {
-            const response = await axios.put(`${apiUrl || API_URL}/items/${id}`, values, {
+            const response = await axios.put(`${API_URL}/items/${id}`, values, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
@@ -167,7 +167,7 @@ export const DataProvider = ({ children }) => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`${apiUrl || API_URL}/items/${id}`, {
+                await axios.delete(`${API_URL}/items/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
