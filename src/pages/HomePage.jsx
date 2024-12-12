@@ -10,6 +10,7 @@ const HomePage = () => {
         Button, Input, Select, Table, itemData, navigate, Form,
         setTypeModal, setSelectedItem, removeCard, token, fetchItem
      } = useContext(DataContext)
+     const dataToken = localStorage.getItem("token")
 
     const [pageSize, setPageSize] = useState(5);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,7 +22,7 @@ const HomePage = () => {
     const [form] = Form.useForm();
 
     useEffect(() => {
-        if (token) {
+        if (token || dataToken) {
             fetchItem()
         }
     }, [token])
