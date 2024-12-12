@@ -20,7 +20,6 @@ export const DataProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [form] = Form.useForm();
     const navigate = useNavigate()
-    console.log(API_URL)
 
     // login
     const login = async (values) => {
