@@ -13,7 +13,7 @@ export const DataProvider = ({ children }) => {
     const tokenInStorage = localStorage.getItem("token") ? localStorage.getItem("token") : "";
     const [token, setToken] = useState(tokenInStorage)
     const [itemData, setItemData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [typeModal, setTypeModal] = useState("Create")
     const [selectedItem, setSelectedItem] = useState(null);
     const [loadingAddUpdate, setLoadingAddUpdate] = useState(false)
