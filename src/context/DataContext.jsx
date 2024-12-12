@@ -58,10 +58,11 @@ export const DataProvider = ({ children }) => {
                 navigate('/login');
             }
         } catch (error) {
+            console.log(error)
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: error.response?.data?.message || error.message
+                text:  error.response?.message || error.message
             });
         } finally {
             setLoading(false);
