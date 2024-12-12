@@ -75,7 +75,7 @@ export const DataProvider = ({ children }) => {
         try {
             const response = await axios.get(`${API_URL}/items`, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${token || tokenInStorage}`,
                 }
             });
             if (response.data.success) {
@@ -100,7 +100,7 @@ export const DataProvider = ({ children }) => {
         try {
             const response = await axios.post(`${API_URL}/items`, newCard, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${token || tokenInStorage}`,
                 }
             });
             if (response.data.success) {
@@ -129,7 +129,7 @@ export const DataProvider = ({ children }) => {
         try {
             const response = await axios.put(`${API_URL}/items/${id}`, values, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${token || tokenInStorage}`,
                 }
             });
             if (response.data.success) {
@@ -168,7 +168,7 @@ export const DataProvider = ({ children }) => {
             try {
                 await axios.delete(`${API_URL}/items/${id}`, {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${token || tokenInStorage}`,
                     }
                 });
                 await fetchItem()
