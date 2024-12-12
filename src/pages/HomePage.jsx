@@ -85,45 +85,42 @@ const HomePage = () => {
             key: 'action',
             align: 'center',
             render: (text, record) => (
-              <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 justify-center">
-                <Button
-                  type="link"
-                  icon={<EyeOutlined />}
-                  onClick={() => handleNavigate(record)}
-                  className="text-gray-600"
-                  size="small"
-                >
-                  <span className="hidden sm:inline">Detail Item</span>
-                  <span className="sm:hidden"> <EyeOutlined /> </span>
-                </Button>
-                <Button
-                  type="primary"
-                  icon={<EditOutlined />}
-                  onClick={() => {
-                    setTypeModal("Edit");
-                    setSelectedItem(record);
-                    setIsModalVisible(true);
-                  }}
-                  className="mr-2"
-                  size="small"
-                >
-                  <span className="hidden sm:inline">Edit</span>
-                  <span className="sm:hidden"> <EditOutlined /> </span>
-                </Button>
-                <Button
-                  type="danger"
-                  icon={<DeleteOutlined />}
-                  onClick={() => removeCard(record.id)}
-                  size="small"
-                >
-                  <span className="hidden sm:inline">Delete</span>
-                  <span className="sm:hidden"> <DeleteOutlined /> </span>
-                </Button>
-              </div>
+                <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 justify-center">
+                    <Button
+                        type="link"
+                        icon={<EyeOutlined />}
+                        onClick={() => handleNavigate(record)}
+                        className="text-gray-600"
+                        size="small"
+                    >
+                        Detail Item
+                    </Button>
+                    <Button
+                        type="primary"
+                        icon={<EditOutlined />}
+                        onClick={() => {
+                            setTypeModal("Edit")
+                            setSelectedItem(record);
+                            setIsModalVisible(true);
+                        }}
+                        className="mr-2"
+                        size="small"
+                    >
+                        Edit
+                    </Button>
+                    <Button
+                        type="danger"
+                        icon={<DeleteOutlined />}
+                          onClick={() => removeCard(record.id)}
+                        size="small"
+                    >
+                        Delete
+                    </Button>
+
+                </div>
             ),
-            className: "sm:block",
-          }
-          
+            className: "sm:block", 
+        },
 
     ];
 
